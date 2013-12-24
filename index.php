@@ -4,8 +4,6 @@
 
 $o = new Magics();
 
-//$o->setData('dfvdfv');
-//$o->getData('Andrew');
 $o->setName('Andrew Sirik');
 $o->getName();
 $o->setNames('An Si');

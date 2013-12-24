@@ -14,30 +14,7 @@ class Magics
 
     }
 
-    /* public function getData($property)
-     {
-       foreach ($this as $obj => $val){
-           $obj->$val;
-       }
-     }*/
-
-    public function setData($key, $value=null)
-    {
-        $this->_hasDataChanges = true;
-        if(is_array($key)) {
-            $this->_data = $key;
-            $this->_addFullNames();
-        } else {
-            $this->_data[$key] = $value;
-            if (isset($this->_syncFieldsMap[$key])) {
-                $fullFieldName = $this->_syncFieldsMap[$key];
-                $this->_data[$fullFieldName] = $value;
-            }
-        }
-        return $this;
-    }
-
-    public function get($property, $args, $methodName) {
+    public function get($property, $methodName) {
         if($property == 'data'){
             foreach($methodName as $key => $val){
                 foreach($this->data as $keys => $vals){
@@ -58,10 +35,6 @@ class Magics
     }
 
     public function set($property, $value, $methodName) {
-      /*  array_push( $this->data[$property] , $value);
-        foreach($this->data as $key => $val){
-            array_push( $this->data , $value);
-        }*/
         $this->data[$property] = $value;
         return $this->data;
     }
@@ -90,24 +63,9 @@ class Magics
         }
     }
 
-    /*protected function checkArguments(array $args, $min, $max, $methodName) {
-        $argc = count($args);
-        if ($argc < $min || $argc > $max) {
-            echo '(Method ' . $methodName . ' needs minimaly '
-                . $min . ' and maximaly ' . $max . ' arguments. ' . $argc . ' arguments given.)';
-        }
-    }*/
-
     public static function __callStatic($name, $arguments) {
         // Замечание: значение $name регистрозависимо.
         echo "call static method '$name' "
             . implode(', ', $arguments). "\n";
     }
 }
-
-$o = new Magics();
-
-//$o->setData('dfvdfv');
-//$o->getData('Andrew');
-
-
