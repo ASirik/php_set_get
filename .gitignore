@@ -1,0 +1,17 @@
+.DS_Store
+.idea
+.idea/*
+# jIdea
+atlassian-ide-plugin.xml
+.idea
+*.iml
+
+#htaccess
+.htaccess
+
+#project
+.project
+#sass
+.sass-cache
+
+phing.xml
